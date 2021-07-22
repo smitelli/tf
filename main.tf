@@ -7,6 +7,17 @@ terraform {
       version = "~> 1.19.0"
     }
   }
+
+  backend "remote" {
+    organization = "smitelli-com"
+
+    # Prefer the `terraform login` interactive flow whenever possible
+    #token = ""
+
+    workspaces {
+      name = "tf"
+    }
+  }
 }
 
 provider "linode" {
