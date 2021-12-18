@@ -63,3 +63,10 @@ resource "linode_domain_record" "txt_spf_zcot-net" {
   name        = ""
   target      = "v=spf1 -all"
 }
+
+resource "linode_domain_record" "txt_gsv_zcot-net" {
+  domain_id   = linode_domain.zcot-net.id
+  record_type = "TXT"
+  name        = ""
+  target      = "google-site-verification=TxkQkVV39ISGeVQtn6Bipk55obotjvBhjZWvJxPcCfs"
+}
