@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    linode = {
+      source  = "linode/linode"
+      version = "~> 1.0"
+    }
+  }
+}
+
 variable "domain_id" {
   description = "The identifier of the Linode domain to attach the records to"
   type        = number
