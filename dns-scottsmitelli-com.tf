@@ -9,40 +9,24 @@ resource "linode_domain_record" "mx_1_scottsmitelli-com" {
   domain_id   = linode_domain.scottsmitelli-com.id
   record_type = "MX"
   name        = ""
-  priority    = 1
-  target      = "aspmx.l.google.com"
+  priority    = 10
+  target      = "mx.zoho.com"
 }
 
 resource "linode_domain_record" "mx_2_scottsmitelli-com" {
   domain_id   = linode_domain.scottsmitelli-com.id
   record_type = "MX"
   name        = ""
-  priority    = 5
-  target      = "alt1.aspmx.l.google.com"
+  priority    = 20
+  target      = "mx2.zoho.com"
 }
 
 resource "linode_domain_record" "mx_3_scottsmitelli-com" {
   domain_id   = linode_domain.scottsmitelli-com.id
   record_type = "MX"
   name        = ""
-  priority    = 5
-  target      = "alt2.aspmx.l.google.com"
-}
-
-resource "linode_domain_record" "mx_4_scottsmitelli-com" {
-  domain_id   = linode_domain.scottsmitelli-com.id
-  record_type = "MX"
-  name        = ""
-  priority    = 10
-  target      = "alt3.aspmx.l.google.com"
-}
-
-resource "linode_domain_record" "mx_5_scottsmitelli-com" {
-  domain_id   = linode_domain.scottsmitelli-com.id
-  record_type = "MX"
-  name        = ""
-  priority    = 10
-  target      = "alt4.aspmx.l.google.com"
+  priority    = 50
+  target      = "mx3.zoho.com"
 }
 
 resource "linode_domain_record" "a_scottsmitelli-com" {
@@ -92,7 +76,14 @@ resource "linode_domain_record" "txt_spf_scottsmitelli-com" {
   domain_id   = linode_domain.scottsmitelli-com.id
   record_type = "TXT"
   name        = ""
-  target      = "v=spf1 include:_spf.google.com a ~all"
+  target      = "v=spf1 include:zoho.com ~all"
+}
+
+resource "linode_domain_record" "txt_dkim_scottsmitelli-com" {
+  domain_id   = linode_domain.scottsmitelli-com.id
+  record_type = "TXT"
+  name        = "zmail._domainkey"
+  target      = "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCYrIZRkcmANSjqczdsVwsAJjSj6ip4MbrO7kwaCy7v/f6hRzSKbInq3lGXl6xYmY7mN2Xfa9ZkWupjMVh6Dyg/xQT/wj5PQti0eW91XQ4nylclt2k4iSH0jSkjgCT6ZYUvWo25EbNmEVscs2wFWlG0FFbQLVAhIEcL8IE1qty69wIDAQAB"
 }
 
 resource "linode_domain_record" "txt_gsv_scottsmitelli-com" {
