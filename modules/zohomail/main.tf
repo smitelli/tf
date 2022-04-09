@@ -1,6 +1,6 @@
 variable "domain_id" {
   description = "The identifier of the Linode domain to attach the records to"
-  type        = int
+  type        = number
 }
 
 variable "dkim_public_key" {
