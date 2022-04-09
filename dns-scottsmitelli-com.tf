@@ -108,3 +108,10 @@ resource "linode_domain_record" "txt_ksv_scottsmitelli-com" {
   name        = ""
   target      = "keybase-site-verification=vZzkuUFcKVMRBbJn8Q2w4qNJeYd5c9hqWi1YollNV44"
 }
+
+resource "linode_domain_record" "txt_zv_scottsmitelli-com" {
+  domain_id   = linode_domain.scottsmitelli-com.id
+  record_type = "TXT"
+  name        = ""
+  target      = "zoho-verification=zb94673074.zmverify.zoho.com"
+}
