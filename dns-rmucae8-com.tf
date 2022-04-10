@@ -8,8 +8,8 @@ resource "linode_domain" "rmucae8-com" {
 module "base_rmucae8-com" {
   source = "./modules/base_domain"
 
-  domain_id                = linode_domain.rmucae8-com.id
-  domain_name              = linode_domain.rmucae8-com.domain
+  domain_id   = linode_domain.rmucae8-com.id
+  domain_name = linode_domain.rmucae8-com.domain
 }
 
 module "zohomail_rmucae8-com" {
