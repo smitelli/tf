@@ -19,6 +19,6 @@ module "zohomail_ivviiv-com" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.ivviiv-com.id
-  #dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVoOLuFQj120i4k2BcCsNrFJoy6XPhFhfoEDuRQN+l2e9yLpMQpk0ZazxYGiZROEJsRNZMSWkl8afF3VOq6yGHmpxuRkZ5acdeAY3XsWpo1CKv2qopUY7yIKUa4QYQNVHXuNzch9uSFqog7cwIr9Tkb1CXYKbSs5WdLrLEwjn1dQIDAQAB"
   verification_code = "zb97081596.zmverify.zoho.com"
 }
