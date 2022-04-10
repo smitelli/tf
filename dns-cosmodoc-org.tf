@@ -19,6 +19,6 @@ module "zohomail_cosmodoc-org" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.cosmodoc-org.id
-  #dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCP0yzlRNHh0rpLrVrv+1OxkzbGqc8PXoB8sKSYrFoiUBpiXmkAASk8x3G3pJkewxx5zf1KDsmIzHFOydx4HvnGgvWqy80ieGDz+BfX+0TtQzEE4HwWmG9MUWCSDDrkX8qBUJqeSK0N3K5GdTgZaRZIyuV7/uWqJghTOZncxf4NQwIDAQAB"
   verification_code = "zb92885171.zmverify.zoho.com"
 }
