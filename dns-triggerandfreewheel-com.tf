@@ -20,5 +20,5 @@ module "zohomail_triggerandfreewheel-com" {
 
   domain_id         = linode_domain.triggerandfreewheel-com.id
   #dkim_public_key   = ""
-  #verification_code = ""
+  verification_code = "zb10281278.zmverify.zoho.com"
 }
