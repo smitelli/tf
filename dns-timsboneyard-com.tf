@@ -9,7 +9,7 @@ module "zohomail_timsboneyard-com" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.timsboneyard-com.id
-  #dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRZUJ1fTKKG7iMGhJeVDV3q3qr3jqzI8aRRHkYq/mj+ImekrdgmhUtrXsagoRGqixtAhuFMXk7fLfucqvZQ4QIZ39AC7jZhW7nERL1w2Gtp9AsYxSpBz1aTiO0agvd9YbtR0oSZ2NXJUcECz/IEmjr8aV01RDelr3PbfUZsuck2wIDAQAB"
   verification_code = "zb08282058.zmverify.zoho.com"
 }
 
