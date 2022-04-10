@@ -17,5 +17,5 @@ module "zohomail_rmucae8-com" {
 
   domain_id         = linode_domain.rmucae8-com.id
   #dkim_public_key   = ""
-  #verification_code = ""
+  verification_code = "zb10007808.zmverify.zoho.com"
 }
