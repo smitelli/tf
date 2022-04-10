@@ -5,44 +5,12 @@ resource "linode_domain" "timsboneyard-com" {
   tags      = ["timsboneyard.com"]
 }
 
-resource "linode_domain_record" "mx_1_timsboneyard-com" {
-  domain_id   = linode_domain.timsboneyard-com.id
-  record_type = "MX"
-  name        = ""
-  priority    = 1
-  target      = "aspmx.l.google.com"
-}
+module "zohomail_timsboneyard-com" {
+  source = "./modules/zohomail"
 
-resource "linode_domain_record" "mx_2_timsboneyard-com" {
-  domain_id   = linode_domain.timsboneyard-com.id
-  record_type = "MX"
-  name        = ""
-  priority    = 5
-  target      = "alt1.aspmx.l.google.com"
-}
-
-resource "linode_domain_record" "mx_3_timsboneyard-com" {
-  domain_id   = linode_domain.timsboneyard-com.id
-  record_type = "MX"
-  name        = ""
-  priority    = 5
-  target      = "alt2.aspmx.l.google.com"
-}
-
-resource "linode_domain_record" "mx_4_timsboneyard-com" {
-  domain_id   = linode_domain.timsboneyard-com.id
-  record_type = "MX"
-  name        = ""
-  priority    = 10
-  target      = "alt3.aspmx.l.google.com"
-}
-
-resource "linode_domain_record" "mx_5_timsboneyard-com" {
-  domain_id   = linode_domain.timsboneyard-com.id
-  record_type = "MX"
-  name        = ""
-  priority    = 10
-  target      = "alt4.aspmx.l.google.com"
+  domain_id         = linode_domain.timsboneyard-com.id
+  #dkim_public_key   = ""
+  verification_code = "zb08282058.zmverify.zoho.com"
 }
 
 resource "linode_domain_record" "a_timsboneyard-com" {
@@ -84,13 +52,6 @@ resource "linode_domain_record" "caa_timsboneyard-com" {
   name        = ""
   tag         = "issue"
   target      = "letsencrypt.org"
-}
-
-resource "linode_domain_record" "txt_spf_timsboneyard-com" {
-  domain_id   = linode_domain.timsboneyard-com.id
-  record_type = "TXT"
-  name        = ""
-  target      = "v=spf1 include:_spf.google.com a ~all"
 }
 
 resource "linode_domain_record" "txt_gsv_timsboneyard-com" {

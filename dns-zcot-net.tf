@@ -1,3 +1,5 @@
+# NOTE: This moved to Cloudflare on 2022-04-09. Nothing in here is active now.
+
 resource "linode_domain" "zcot-net" {
   domain    = "zcot.net"
   type      = "master"
