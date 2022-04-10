@@ -19,6 +19,6 @@ module "zohomail_dotclockproductions-com" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.dotclockproductions-com.id
-  #dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOv+f2+g/CXOBLXuA2qosfRgTu/90TCNGYNOQtZkafOmKLPFRC/ovLNPm7IAd30ESzdCkghu9VSWjBkt5JgvbyZ9gWC6H5l1ycPk4RFaItH+s3f3A3wseO2vFO8atgsMa0Tus9NJadBON9y08ATjdtw4B9X/9bZNAawQbkbFd3hQIDAQAB"
   verification_code = "zb17489101.zmverify.zoho.com"
 }
