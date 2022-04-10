@@ -18,7 +18,7 @@ module "base_thesweetnut-com" {
 module "zohomail_thesweetnut-com" {
   source = "./modules/zohomail"
 
-  domain_id         = linode_domain.triggerandfreewheel-com.id
+  domain_id         = linode_domain.thesweetnut-com.id
   #dkim_public_key   = ""
   verification_code = "zb86899571.zmverify.zoho.com"
 }
