@@ -1,49 +1,24 @@
 resource "linode_domain" "cosmodoc-org" {
   domain    = "cosmodoc.org"
   type      = "master"
-  soa_email = local.default_soa_email
+  soa_email = "scott+soa@cosmodoc.org"
   tags      = ["cosmodoc.org"]
 }
 
-resource "linode_domain_record" "a_cosmodoc-org" {
-  domain_id   = linode_domain.cosmodoc-org.id
-  record_type = "A"
-  name        = ""
-  target      = local.alala_ips.v4
+module "base_cosmodoc-org" {
+  source = "./modules/base_domain"
+
+  domain_id                = linode_domain.cosmodoc-org.id
+  domain_name              = linode_domain.cosmodoc-org.domain
+  primary_ipv4             = [local.alala_ips.v4]
+  primary_ipv6             = [local.alala_ips.v6]
+  google_verification_code = "XjFRDQBDgOIJlUhEYkv6IRLrORC0ij7sN_fK5B9TBg4"
 }
 
-resource "linode_domain_record" "aaaa_cosmodoc-org" {
-  domain_id   = linode_domain.cosmodoc-org.id
-  record_type = "AAAA"
-  name        = ""
-  target      = local.alala_ips.v6
-}
+module "zohomail_cosmodoc-org" {
+  source = "./modules/zohomail"
 
-resource "linode_domain_record" "cname_www-cosmodoc-org" {
-  domain_id   = linode_domain.cosmodoc-org.id
-  record_type = "CNAME"
-  name        = "www"
-  target      = linode_domain.cosmodoc-org.domain
-}
-
-resource "linode_domain_record" "caa_cosmodoc-org" {
-  domain_id   = linode_domain.cosmodoc-org.id
-  record_type = "CAA"
-  name        = ""
-  tag         = "issue"
-  target      = "letsencrypt.org"
-}
-
-resource "linode_domain_record" "txt_spf_cosmodoc-org" {
-  domain_id   = linode_domain.cosmodoc-org.id
-  record_type = "TXT"
-  name        = ""
-  target      = "v=spf1 -all"
-}
-
-resource "linode_domain_record" "txt_gsv_cosmodoc-org" {
-  domain_id   = linode_domain.cosmodoc-org.id
-  record_type = "TXT"
-  name        = ""
-  target      = "google-site-verification=XjFRDQBDgOIJlUhEYkv6IRLrORC0ij7sN_fK5B9TBg4"
+  domain_id         = linode_domain.cosmodoc-org.id
+  #dkim_public_key   = ""
+  verification_code = "zb92885171.zmverify.zoho.com"
 }
