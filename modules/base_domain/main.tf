@@ -21,7 +21,7 @@ resource "linode_domain_record" "aaaa" {
   domain_id   = var.domain_id
   record_type = "AAAA"
   name        = ""
-  target      = var.primary_ipv6
+  target      = each.key
 }
 
 resource "linode_domain_record" "www" {
