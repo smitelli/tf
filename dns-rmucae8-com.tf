@@ -5,9 +5,17 @@ resource "linode_domain" "rmucae8-com" {
   tags      = ["rmucae8.com"]
 }
 
-resource "linode_domain_record" "txt_spf_rmucae8-com" {
-  domain_id   = linode_domain.rmucae8-com.id
-  record_type = "TXT"
-  name        = ""
-  target      = "v=spf1 -all"
+module "base_rmucae8-com" {
+  source = "./modules/base_domain"
+
+  domain_id                = linode_domain.rmucae8-com.id
+  domain_name              = linode_domain.rmucae8-com.domain
+}
+
+module "zohomail_rmucae8-com" {
+  source = "./modules/zohomail"
+
+  domain_id         = linode_domain.rmucae8-com.id
+  #dkim_public_key   = ""
+  #verification_code = ""
 }

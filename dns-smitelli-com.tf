@@ -1,7 +1,7 @@
 resource "linode_domain" "smitelli-com" {
   domain    = "smitelli.com"
   type      = "master"
-  soa_email = local.default_soa_email
+  soa_email = "scott+soa@smitelli.com"
   tags      = ["smitelli.com"]
 }
 
