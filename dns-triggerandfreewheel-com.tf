@@ -19,6 +19,6 @@ module "zohomail_triggerandfreewheel-com" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.triggerandfreewheel-com.id
-  #dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGXbtkPJ788i2jVFhK6mecEK4TdzWDBDSVGgf6KqGQE54h1BBHlsUyOknj3WJXwvZ6tCI4OeKKeB2Ibvl7M5PMog6fvrQe7qcvTd10FBYJb+OqMuPGTcQ8q6rLcbZFHlrXes5qFEo3ZM1cUWam2mN8pf7OYDqBYk1vAj9YDQ96aQIDAQAB"
   verification_code = "zb10281278.zmverify.zoho.com"
 }
