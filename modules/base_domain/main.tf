@@ -7,7 +7,7 @@ terraform {
 }
 
 resource "linode_domain_record" "a" {
-  for_each = var.primary_ipv4
+  for_each = toset(var.primary_ipv4)
 
   domain_id   = var.domain_id
   record_type = "A"
@@ -16,7 +16,7 @@ resource "linode_domain_record" "a" {
 }
 
 resource "linode_domain_record" "aaaa" {
-  for_each = var.primary_ipv6
+  for_each = toset(var.primary_ipv6)
 
   domain_id   = var.domain_id
   record_type = "AAAA"
