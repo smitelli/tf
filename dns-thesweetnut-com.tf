@@ -5,45 +5,20 @@ resource "linode_domain" "thesweetnut-com" {
   tags      = ["thesweetnut.com"]
 }
 
-resource "linode_domain_record" "a_thesweetnut-com" {
-  domain_id   = linode_domain.thesweetnut-com.id
-  record_type = "A"
-  name        = ""
-  target      = local.alala_ips.v4
+module "base_thesweetnut-com" {
+  source = "./modules/base_domain"
+
+  domain_id                = linode_domain.thesweetnut-com.id
+  domain_name              = linode_domain.thesweetnut-com.domain
+  primary_ipv4             = [local.alala_ips.v4]
+  primary_ipv6             = [local.alala_ips.v6]
+  google_verification_code = "zWrFe7dubd8Nt06B74gCCxb1yr3LTlNAbP2uIVjemYg"
 }
 
-resource "linode_domain_record" "aaaa_thesweetnut-com" {
-  domain_id   = linode_domain.thesweetnut-com.id
-  record_type = "AAAA"
-  name        = ""
-  target      = local.alala_ips.v6
-}
+module "zohomail_thesweetnut-com" {
+  source = "./modules/zohomail"
 
-resource "linode_domain_record" "cname_www-thesweetnut-com" {
-  domain_id   = linode_domain.thesweetnut-com.id
-  record_type = "CNAME"
-  name        = "www"
-  target      = linode_domain.thesweetnut-com.domain
-}
-
-resource "linode_domain_record" "caa_thesweetnut-com" {
-  domain_id   = linode_domain.thesweetnut-com.id
-  record_type = "CAA"
-  name        = ""
-  tag         = "issue"
-  target      = "letsencrypt.org"
-}
-
-resource "linode_domain_record" "txt_spf_thesweetnut-com" {
-  domain_id   = linode_domain.thesweetnut-com.id
-  record_type = "TXT"
-  name        = ""
-  target      = "v=spf1 -all"
-}
-
-resource "linode_domain_record" "txt_gsv_thesweetnut-com" {
-  domain_id   = linode_domain.thesweetnut-com.id
-  record_type = "TXT"
-  name        = ""
-  target      = "google-site-verification=zWrFe7dubd8Nt06B74gCCxb1yr3LTlNAbP2uIVjemYg"
+  domain_id         = linode_domain.triggerandfreewheel-com.id
+  #dkim_public_key   = ""
+  verification_code = "zb86899571.zmverify.zoho.com"
 }
