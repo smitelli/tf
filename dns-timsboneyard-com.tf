@@ -26,7 +26,7 @@ resource "linode_domain_record" "a_timsboneyard-com" {
   record_type = "A"
   name        = ""
   target      = local.dummy_ip_v4 # Maintained by dyndns on calcabrina.acy1
-  ttl_sec     = 300
+  ttl_sec     = 5 * 60
 
   lifecycle {
     ignore_changes = [target]

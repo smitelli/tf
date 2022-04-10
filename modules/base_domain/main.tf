@@ -6,6 +6,9 @@ terraform {
   }
 }
 
+#
+# Base A and/or AAAA records for the domain apex
+#
 resource "linode_domain_record" "a" {
   for_each = toset(var.primary_ipv4)
 
@@ -24,6 +27,9 @@ resource "linode_domain_record" "aaaa" {
   target      = each.key
 }
 
+#
+# www -> apex
+#
 resource "linode_domain_record" "www" {
   domain_id   = var.domain_id
   record_type = "CNAME"
@@ -31,6 +37,9 @@ resource "linode_domain_record" "www" {
   target      = var.domain_name
 }
 
+#
+# CAA record -- Only Let's Encrypt is currently used
+#
 resource "linode_domain_record" "caa" {
   domain_id   = var.domain_id
   record_type = "CAA"
@@ -39,6 +48,9 @@ resource "linode_domain_record" "caa" {
   target      = "letsencrypt.org"
 }
 
+#
+# Google site ownership verification
+#
 resource "linode_domain_record" "txt_google_verification" {
   count = (var.google_verification_code == null) ? 0 : 1
 
