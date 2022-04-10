@@ -13,6 +13,7 @@ module "base_scottsmitelli-com" {
   primary_ipv4             = [local.alala_ips.v4]
   primary_ipv6             = [local.alala_ips.v6]
   google_verification_code = "WLuppgrNX9b_eUNKStJ1I_9VauCuTgJGmLfCfMswChI"
+}
 
 module "zohomail_scottsmitelli-com" {
   source = "./modules/zohomail"
