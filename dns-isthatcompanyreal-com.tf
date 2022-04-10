@@ -19,6 +19,6 @@ module "zohomail_isthatcompanyreal-com" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.isthatcompanyreal-com.id
-  #dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCucriYwsBkfd7+rAL7ToZPHFsfd19kb0nM1lVX0jC/3ZM70bvpGmz3XkfktL+w9PkVO0gFUwSBZRn57aNxNBe4FTfQiAGQkM9xCrWhhgGLnMGDzu1r9GuN0qO2MQVcDblZqX2r4lf5GA4SUwaLtlp5TdUzu/HdsrMv1QQnbs5M+wIDAQAB"
   verification_code = "zb32704310.zmverify.zoho.com"
 }
