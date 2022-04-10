@@ -1,7 +1,7 @@
 resource "linode_domain" "thesweetnut-com" {
   domain    = "thesweetnut.com"
   type      = "master"
-  soa_email = local.default_soa_email
+  soa_email = "scott+soa@thesweetnut.com"
   tags      = ["thesweetnut.com"]
 }
 
@@ -19,6 +19,6 @@ module "zohomail_thesweetnut-com" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.thesweetnut-com.id
-  #dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZozHoxx9JTRrXgAhCqR4i28aW4ETnsUEU1lRFjc6aJ5L42emA6KDeLRqF7ajtYmx4DfG2yJB5m51mX4Bu79sfhwRrhX2EiUPpPNB+0X5YQBFpEOiG6Ziotk+SxmfYVnqRO7cyKalivy3qHpdZym5dU0wtRpGVvcLeKt1MHTQ85QIDAQAB"
   verification_code = "zb86899571.zmverify.zoho.com"
 }
