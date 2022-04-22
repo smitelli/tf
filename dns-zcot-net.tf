@@ -1,5 +1,3 @@
-# NOTE: This moved to Cloudflare on 2022-04-09. Nothing in here is active now.
-
 resource "linode_domain" "zcot-net" {
   domain    = "zcot.net"
   type      = "master"
@@ -7,68 +5,20 @@ resource "linode_domain" "zcot-net" {
   tags      = ["zcot.net"]
 }
 
-resource "linode_domain_record" "mx_zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "MX"
-  name        = ""
-  priority    = 1
-  target      = "mx.zcot.net"
+module "base_zcot-net" {
+  source = "./modules/base_domain"
+
+  domain_id                = linode_domain.zcot-net.id
+  domain_name              = linode_domain.zcot-net.domain
+  primary_ipv4             = [local.alala_ips.v4]
+  primary_ipv6             = [local.alala_ips.v6]
+  google_verification_code = "TxkQkVV39ISGeVQtn6Bipk55obotjvBhjZWvJxPcCfs"
 }
 
-resource "linode_domain_record" "a_zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "A"
-  name        = ""
-  target      = local.alala_ips.v4
-}
+module "zohomail_zcot-net" {
+  source = "./modules/zohomail"
 
-resource "linode_domain_record" "a_mx-zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "A"
-  name        = "mx"
-  target      = local.alala_ips.v4
-}
-
-resource "linode_domain_record" "aaaa_zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "AAAA"
-  name        = ""
-  target      = local.alala_ips.v6
-}
-
-# SMTP is not currently listening on any ipv6 interfaces; don't act like it is.
-# resource "linode_domain_record" "aaaa_mx-zcot-net" {
-#   domain_id   = linode_domain.zcot-net.id
-#   record_type = "AAAA"
-#   name        = "mx"
-#   target      = local.alala_ips.v6
-# }
-
-resource "linode_domain_record" "cname_www-zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "CNAME"
-  name        = "www"
-  target      = linode_domain.zcot-net.domain
-}
-
-resource "linode_domain_record" "caa_zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "CAA"
-  name        = ""
-  tag         = "issue"
-  target      = "letsencrypt.org"
-}
-
-resource "linode_domain_record" "txt_spf_zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "TXT"
-  name        = ""
-  target      = "v=spf1 -all"
-}
-
-resource "linode_domain_record" "txt_gsv_zcot-net" {
-  domain_id   = linode_domain.zcot-net.id
-  record_type = "TXT"
-  name        = ""
-  target      = "google-site-verification=TxkQkVV39ISGeVQtn6Bipk55obotjvBhjZWvJxPcCfs"
+  domain_id         = linode_domain.zcot-net.id
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuEM6DU7mHlqBGFL2IjGlb4b9tTgiqGvRIrP/HkFvL7mU8io4Y0K49KBexJ7/0A6YJCnuJ3zJcZZWrj4V76TvByFDeGmWlEYvo5NQKjsD5lGCeC83HFn2f7ymfkRWe6zTThMsiGcMZwfab3ny0fKkJ3zZsLXEIXvvUmnhcshXtGQIDAQAB"
+  verification_code = "zb86184027.zmverify.zoho.com"
 }
