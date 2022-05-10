@@ -34,7 +34,7 @@ resource "linode_domain_record" "txt_spf" {
   domain_id   = var.domain_id
   record_type = "TXT"
   name        = ""
-  target      = "v=spf1 include:zoho.com ~all"
+  target      = "v=spf1 include:zoho.com a ~all"
 }
 
 resource "linode_domain_record" "txt_dkim" {
