@@ -87,15 +87,6 @@ resource "linode_firewall" "alala" {
   }
 
   inbound {
-    label    = "accept-smtp"
-    action   = "ACCEPT"
-    protocol = "TCP"
-    ports    = "25"
-    ipv4     = ["0.0.0.0/0"]
-    ipv6     = null # SMTP is not currently listening on any ipv6 interfaces
-  }
-
-  inbound {
     label    = "accept-http"
     action   = "ACCEPT"
     protocol = "TCP"
