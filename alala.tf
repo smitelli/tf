@@ -119,6 +119,13 @@ resource "linode_domain_record" "aaaa_alala" {
   target      = local.alala_ips.v6
 }
 
+resource "linode_domain_record" "txt_spf_alala" {
+  domain_id   = local.alala_domain.id
+  record_type = "TXT"
+  name        = "alala"
+  target      = "v=spf1 include:${local.alala_domain.domain} a ~all"
+}
+
 resource "linode_rdns" "ptr_v4_alala" {
   address = local.alala_ips.v4
   rdns    = "${linode_domain_record.a_alala.name}.${local.alala_domain.domain}"
