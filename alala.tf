@@ -1,6 +1,7 @@
 locals {
   alala_type   = "g6-standard-2"
   alala_domain = linode_domain.smitelli-com
+  alala_swap   = 512  # MiB
 
   alala_ips = {
     v4 = linode_instance.alala.ip_address
@@ -17,6 +18,7 @@ resource "linode_instance" "alala" {
   region           = "us-southeast"
   type             = local.alala_type
   private_ip       = false
+  resize_disk      = false
   backups_enabled  = true
   watchdog_enabled = true
   group            = local.alala_domain.domain
@@ -24,18 +26,30 @@ resource "linode_instance" "alala" {
 
   disk {
     label      = "alala-root"
-    size       = data.linode_instance_type.alala.disk
+    size       = data.linode_instance_type.alala.disk - local.alala_swap
     filesystem = "ext4"
+  }
+
+  disk {
+    label      = "alala-swap"
+    size       = local.alala_swap
+    filesystem = "swap"
   }
 
   config {
     label     = "alala-config"
+    comments  = ""
     virt_mode = "paravirt"
-    kernel    = "linode/latest-64bit"
+    kernel    = "linode/grub2"
+    run_level = "default"
 
     devices {
       sda { # default root device
         disk_label = "alala-root"
+      }
+
+      sdb {
+        disk_label = "alala-swap"
       }
     }
 
@@ -47,7 +61,7 @@ resource "linode_instance" "alala" {
       distro             = true
       updatedb_disabled  = true
       modules_dep        = true
-      devtmpfs_automount = false
+      devtmpfs_automount = true
       network            = true
     }
   }
