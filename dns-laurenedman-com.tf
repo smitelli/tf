@@ -18,6 +18,6 @@ module "zohomail_laurenedman-com" {
   source = "./modules/zohomail"
 
   domain_id         = linode_domain.laurenedman-com.id
-  # dkim_public_key   = ""
+  dkim_public_key   = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOvlxFvvEucUtrFFH6XAAxqrcrl8TDd8BBY7W0A24CaKMd4iFdna8LMuEKqoeNksOPRg8t82lwEPfTcp3xu7pWgikTMeNzgjfQ+i+yGNu34okjSzIRvllA0UvOgBm8q/hK8shmWN4yfq93i2cRqqAFt9Pxwn+ImFuS7lM9aIhwFQIDAQAB"
   verification_code = "zb36381187.zmverify.zoho.com"
 }
