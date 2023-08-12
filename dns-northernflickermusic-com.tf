@@ -14,10 +14,10 @@ module "base_northernflickermusic-com" {
   primary_ipv6 = [local.alala_ips.v6]
 }
 
-# No emails are sent from this domain
-resource "linode_domain_record" "txt_spf_northernflickermusic-com" {
-  domain_id   = linode_domain.northernflickermusic-com.id
-  record_type = "TXT"
-  name        = ""
-  target      = "v=spf1 -all"
+module "zohomail_northernflickermusic-com" {
+  source = "./modules/zohomail"
+
+  domain_id         = linode_domain.northernflickermusic-com.id
+  # dkim_public_key   = ""
+  verification_code = "zb64559906.zmverify.zoho.com"
 }
