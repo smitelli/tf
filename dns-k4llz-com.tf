@@ -17,5 +17,5 @@ module "zohomail_k4llz-com" {
 
   domain_id         = linode_domain.k4llz-com.id
   # dkim_public_key   = ""
-  # verification_code = ""
+  verification_code = "zb35546922.zmverify.zoho.com"
 }
