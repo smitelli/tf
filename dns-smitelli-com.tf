@@ -60,7 +60,7 @@ resource "linode_domain_record" "a_acy1-smitelli-com" {
   record_type = "A"
   name        = "acy1"
   target      = local.dummy_ip_v4 # Maintained by dyndns on calcabrina.acy1
-  ttl_sec     = 5 * 60
+  ttl_sec     = 2 * 60
 
   lifecycle {
     ignore_changes = [target]
@@ -72,7 +72,7 @@ resource "linode_domain_record" "a_rdu1-smitelli-com" {
   record_type = "A"
   name        = "rdu1"
   target      = local.dummy_ip_v4 # Maintained by dyndns on malacoda.rdu1
-  ttl_sec     = 5 * 60
+  ttl_sec     = 2 * 60
 
   lifecycle {
     ignore_changes = [target]
@@ -84,7 +84,7 @@ resource "linode_domain_record" "aaaa_acy1v6-smitelli-com" {
   record_type = "AAAA"
   name        = "acy1v6"
   target      = local.dummy_ip_v6 # Maintained by dyndns on calcabrina.acy1
-  ttl_sec     = 5 * 60
+  ttl_sec     = 2 * 60
 
   lifecycle {
     ignore_changes = [target]
@@ -96,7 +96,7 @@ resource "linode_domain_record" "aaaa_rdu1v6-smitelli-com" {
   record_type = "AAAA"
   name        = "rdu1v6"
   target      = local.dummy_ip_v6 # Maintained by dyndns on malacoda.rdu1
-  ttl_sec     = 5 * 60
+  ttl_sec     = 2 * 60
 
   lifecycle {
     ignore_changes = [target]
